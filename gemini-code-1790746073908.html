@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Winter Arc：每日贏計畫</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --success: #10b981;
+        }
+        body {
+            font-family: 'PingFang TC', 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 { color: var(--accent); }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .quote-box {
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            border: 1px solid var(--accent);
+        }
+        .total-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .radio-group label {
+            background-color: #334155;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            flex: 1;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .radio-group input[type="radio"] { display: none; }
+        .radio-group input[type="radio"]:checked + label {
+            background-color: var(--accent);
+            color: #fff;
+        }
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover { background-color: var(--accent-hover); }
+        .honesty-notice {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ef4444;
+            margin-top: 10px;
+        }
+        .achievement-btn {
+            background-color: #8b5cf6;
+            margin-top: 10px;
+        }
+        .achievement-btn:hover { background-color: #7c3aed; }
+        .rules-details { font-size: 0.9rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header style="text-align: center; margin-bottom: 30px;">
+        <h1>❄️ 2026 Winter Arc：每日贏計畫</h1>
+        <p>執行期間：2026/10/01 - 2026/12/31 (共 92 天)</p>
+    </header>
+
+    <div class="card score-board">
+        <div>
+            <h2>目前總積分</h2>
+            <p>紀律的累積，積沙成塔。</p>
+        </div>
+        <div class="total-score" id="display-score">0</div>
+    </div>
+
+    <div class="card">
+        <h2>📝 今日紀錄 (0-3分)</h2>
+        <div class="form-group">
+            <label>📚 閱讀 (非影像類吸收)</label>
+            <div class="rules-details">涵蓋：課堂文本、文學、小說、工具書、詩集、漫畫等</div>
+            <div class="radio-group" id="read-group">
+                <input type="radio" name="read" id="r0" value="0" checked><label for="r0">0分 (中斷)</label>
+                <input type="radio" name="read" id="r1" value="1"><label for="r1">1分 (微量)</label>
+                <input type="radio" name="read" id="r2" value="2"><label for="r2">2分 (正常)</label>
+                <input type="radio" name="read" id="r3" value="3"><label for="r3">3分 (狂做)</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>🏋️️ 運動 (心肺與肌力訓練)</label>
+            <div class="rules-details">涵蓋：健身房、籃球實戰/投籃、高強度有氧、主動恢復/深度拉筋</div>
+            <div class="radio-group" id="sport-group">
+                <input type="radio" name="sport" id="s0" value="0" checked><label for="s0">0分 (中斷)</label>
+                <input type="radio" name="sport" id="s1" value="1"><label for="s1">1分 (微量)</label>
+                <input type="radio" name="sport" id="s2" value="2"><label for="s2">2分 (正常)</label>
+                <input type="radio" name="sport" id="s3" value="3"><label for="s3">3分 (狂做)</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>✒️ 創作 (主動產出)</label>
+            <div class="rules-details">涵蓋：劇本創作、規則設計、短篇故事撰寫、下廚、手工、繪畫等</div>
+            <div class="radio-group" id="create-group">
+                <input type="radio" name="create" id="c0" value="0" checked><label for="c0">0分 (中斷)</label>
+                <input type="radio" name="create" id="c1" value="1"><label for="c1">1分 (微量)</label>
+                <input type="radio" name="create" id="c2" value="2"><label for="c2">2分 (正常)</label>
+                <input type="radio" name="create" id="c3" value="3"><label for="c3">3分 (狂做)</label>
+            </div>
+        </div>
+
+        <button onclick="submitDaily()">送出今日分數</button>
+        <p class="honesty-notice">⚠️ 標註：最重要的是「誠」，不要騙大家，更不要騙自己，有分就是有分，沒有就是沒分。</p>
+    </div>
+
+    <div class="card">
+        <h2>🏆 宣告成就里程碑</h2>
+        <p class="rules-details">當完成某個重大成就，可手動加上社群判定後的分數。</p>
+        <select id="achievement-score" style="padding: 10px; width: 100%; margin-bottom: 15px; background: #334155; color: white; border: none; border-radius: 8px;">
+            <option value="5">🥉 難度 C：小試身手 (+5 分)</option>
+            <option value="10">🥈 難度 B：突破自我 (+10 分)</option>
+            <option value="20">🥇 難度 A：史詩成就 (+20 分)</option>
+        </select>
+        <button class="achievement-btn" onclick="submitAchievement()">解鎖成就加分</button>
+    </div>
+
+    <div class="card">
+        <h2>💡 核心精神</h2>
+        <div class="quote-box">
+            「每天進步 1%，一年後你會進步 37 倍。」——《原子習慣》
+        </div>
+        <div class="quote-box">
+            "It gets easier. Everyday it gets a little easier. But you gotta do it everyday, that's the hard part. But it does get easier." ——《馬男波傑克》
+        </div>
+        <p style="font-size: 0.95rem; color: var(--text-muted);">
+            這次是以「每日贏」為主要計分方式，通過每一天都至少做一點，積沙成塔。如果利用 motivation 的心態，總有一天會被燃燒殆盡，但如果是 discipline 的心態，想做的天做，不想做的天也做，這樣才能持續進步。
+        </p>
+    </div>
+</div>
+
+<script>
+    // 初始化分數
+    let totalScore = localStorage.getItem('winterArcScore') ? parseInt(localStorage.getItem('winterArcScore')) : 0;
+    document.getElementById('display-score').innerText = totalScore;
+
+    function submitDaily() {
+        const readScore = parseInt(document.querySelector('input[name="read"]:checked').value);
+        const sportScore = parseInt(document.querySelector('input[name="sport"]:checked').value);
+        const createScore = parseInt(document.querySelector('input[name="create"]:checked').value);
+        
+        const dailyTotal = readScore + sportScore + createScore;
+        
+        if (confirm(`確認送出今日分數：${dailyTotal} 分？\n(銘記「誠」字原則)`)) {
+            totalScore += dailyTotal;
+            updateScore();
+            alert('紀錄成功！It gets easier.');
+            // 重置選項
+            document.getElementById('r0').checked = true;
+            document.getElementById('s0').checked = true;
+            document.getElementById('c0').checked = true;
+        }
+    }
+
+    function submitAchievement() {
+        const bonus = parseInt(document.getElementById('achievement-score').value);
+        if (confirm(`確認解鎖成就並加上 ${bonus} 分嗎？`)) {
+            totalScore += bonus;
+            updateScore();
+            alert('太神啦！成就解鎖成功！');
+        }
+    }
+
+    function updateScore() {
+        document.getElementById('display-score').innerText = totalScore;
+        localStorage.setItem('winterArcScore', totalScore);
+    }
+</script>
+
+</body>
+</html>
